@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  risk_assesor:
+    build:
+      context: servers/risk_assesor
+      dockerfile: Dockerfile
+    container_name: risk_assesor
+    ports:
+      - "8004:8004"
+    env_file:
+      - .env
+
+  credit_analyzer:
+    build:
+      context: servers/credit_analyzer
+      dockerfile: Dockerfile
+    container_name: credit_analyzer
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+
+  loan_officer:
+    build:
+      context: servers/loan_parser
+      dockerfile: Dockerfile
+    container_name: loan_parser
+    ports:
+      - "8003:8003"
+    env_file:
+      - .env
+
